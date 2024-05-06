@@ -1,0 +1,25 @@
+header img{
+    width: 70px;
+}
+
+header{
+    background-color: rgb(22, 22, 22);
+    color: #58c5da;
+}
+
+body{
+    background-color: rgb(83, 81, 81);
+    color: #58c5da;
+}
+
+.list-group-flush{
+    border-radius: 20px;
+    overflow: hidden;
+}
+.radius-list ul li{
+    border-radius: 20px;
+    margin: 5px;
+}
+.pointer{
+    cursor: pointer;
+}
