@@ -17,21 +17,33 @@ createApp({
         getData(){
             axios.get(this.apiUrl).then((res) => {
                 this.todo = res.data;
+                this.lastId = this.todo.length - 1;
             })
         }, 
         addTodo(){
             const task = { ...this.newTask };
             this.newTask = {
-                text: "",
+                text: ""
             },
             this.lastId += 1;
             task.id = this.lastId;
             this.todo.push(task);
             const data = new FormData();
-            data.append('text', task.text)
+            data.append('text', task.text);
+            data.append('id', task.id);
             axios.post(this.apiUrl, data).then((res) => {
                 console.log(res.data);
                 this.lastId = this.todo.length - 1;
+            })
+        },
+        removeTodo(event, index){
+            event.preventDefault();
+            const data = {
+                id: index,
+            }
+            axios.delete(this.apiUrl, { data }).then((res) => {
+                console.log(res.data);
+                this.todo = res.data;
             })
         }
     },
